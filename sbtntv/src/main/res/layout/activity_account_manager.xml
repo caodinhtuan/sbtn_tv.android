@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<fragment-->
+    <!--android:id="@+id/account_manager_fragment"-->
+    <!--android:name="com.onworldtv.onworldtvdemo.fragment.LoginRegisterFragment-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context=".activity.AccountManagerActivity"-->
+    <!--tools:deviceIds="tv"-->
+    <!--tools:ignore="MergeRootFrame" />-->
+
+    <FrameLayout
+        android:id="@+id/account_manager_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+    <include layout="@layout/custom_loading" />
+
+</FrameLayout>
+

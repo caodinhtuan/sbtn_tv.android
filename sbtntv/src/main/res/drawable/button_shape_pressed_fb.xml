@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="2dp" />
+
+    <gradient
+        android:angle="270"
+        android:centerColor="@color/blue_fb_pressed"
+        android:centerX="50%"
+        android:endColor="@color/blue_fb"
+        android:startColor="@color/blue_fb"
+        android:type="linear" />
+
+    <padding
+        android:bottom="0dp"
+        android:left="0dp"
+        android:right="0dp"
+        android:top="0dp" />
+   
+    <stroke
+        android:width="@dimen/size_border_button_selected"
+        android:color="@color/white_tv" />
+</shape>

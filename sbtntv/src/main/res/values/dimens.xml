@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_border_button_selected">2dp</dimen>
+    <dimen name="viewpager_margin">-300dp</dimen>
+    <dimen name="viewpager_margin_fix">150dp</dimen>
+
+    <dimen name="card_view_badge_size">35dp</dimen>
+</resources>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/layout_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="10%"
+        app:layout_marginLeftPercent="5%"
+        app:layout_marginTopPercent="5%">
+
+        <net.soulwolf.widget.ratiolayout.widget.RatioImageView
+            android:id="@+id/icon_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitStart"
+            android:src="@drawable/icon_voice_search"
+            android:visibility="gone"
+            app:datumRatio="datumHeight"
+            app:heightRatio="1.0"
+            app:widthRatio="1.0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:background="@color/Gray"
+            android:orientation="horizontal"
+            app:layout_widthPercent="60%">
+
+            <net.soulwolf.widget.ratiolayout.widget.RatioImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:src="@drawable/icon_app"
+                app:datumRatio="datumHeight"
+                app:heightRatio="1.0"
+                app:widthRatio="1.0" />
+
+            <EditText
+                android:id="@+id/edtSearch"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="Input search text here"
+                android:imeOptions="actionSearch"
+                android:selectAllOnFocus="true"
+                android:textColor="@color/white_tv"
+                android:textColorHint="@color/button_light" />
+
+            <net.soulwolf.widget.ratiolayout.widget.RatioImageButton
+                android:id="@+id/buttonSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@drawable/statelist_button"
+                android:padding="5dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon_search"
+                app:datumRatio="datumHeight"
+                app:heightRatio="1.0"
+                app:widthRatio="1.5" />
+
+        </LinearLayout>
+
+    </android.support.percent.PercentRelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_search_browse"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:nextFocusUp="@id/edtSearch" />
+
+    <include layout="@layout/custom_loading" />
+
+</android.support.percent.PercentRelativeLayout>
+

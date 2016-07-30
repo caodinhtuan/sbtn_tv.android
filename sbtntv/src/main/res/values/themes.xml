@@ -1,0 +1,44 @@
+<resources>
+
+    <style name="Theme.MyLeanback" parent="Theme.Leanback">
+        <item name="android:windowEnterTransition">@android:transition/fade</item>
+        <item name="android:windowExitTransition">@android:transition/fade</item>
+        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+        <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:colorPrimary">@color/blue_theme</item>
+        <item name="android:textColorPrimary">@color/white_tv</item>
+
+        <item name="imageCardViewBadgeStyle">@style/Theme.MyLeanback.ImageCardView.BadgeStyle</item>
+        <item name="sectionHeaderStyle">@style/Theme.MyLeanback.Header.Section</item>
+
+        <item name="searchOrbViewStyle">@style/Theme.MyLeanback.Widget.Leanback.SearchOrbViewStyle
+        </item>
+
+    </style>
+
+    <style name="Theme.MyLeanback.Header.Section" parent="Widget.Leanback.Header.Section">
+        <item name="android:textAppearance">
+            @style/Theme.MyLeanback.TextAppearance.Leanback.Header.Section
+        </item>
+    </style>
+
+    <style name="Theme.MyLeanback.TextAppearance.Leanback.Header.Section" parent="TextAppearance.Leanback.Header.Section">
+        <item name="android:textColor">@color/blue_theme2</item>
+    </style>
+
+    <style name="Theme.MyLeanback.ImageCardView.BadgeStyle" parent="Widget.Leanback.ImageCardView.BadgeStyle">
+        <item name="android:layout_width">@dimen/card_view_badge_size</item>
+        <item name="android:layout_height">@dimen/card_view_badge_size</item>
+    </style>
+
+    <style name="Theme.MyLeanback.Widget.Leanback.SearchOrbViewStyle" parent="Widget.Leanback.SearchOrbViewStyle">
+        <item name="searchOrbColor">@color/blue_theme2</item>
+        <!--<item name="searchOrbIconColor">@color/blue_theme</item>-->
+        <!--<item name="searchOrbIcon">?attr/defaultSearchIcon</item>-->
+        <item name="searchOrbBrightColor">@color/blue_theme3</item>
+    </style>
+
+</resources>

@@ -1,0 +1,145 @@
+apply plugin: 'com.android.application'
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "24.0.0"
+
+    defaultConfig {
+        applicationId "com.sbtn.androidtv"
+        minSdkVersion 21
+        targetSdkVersion 23
+        versionCode 1
+        versionName '1.0.0'
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = new File(
+                    output.outputFile.parent,
+                    output.outputFile.name.replace(".apk", "-${variant.versionName}.apk"))
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile rootProject.file("sbtntv_release.jks")
+            keyAlias "SBTNAndroidTVKey"
+
+            storePassword System.getenv("KSTOREPWD")
+            keyPassword System.getenv("KEYPWD")
+        }
+
+        debug {
+            storeFile rootProject.file("debug.keystore")
+        }
+    }
+
+    buildTypes {
+        def BOOLEAN = "boolean"
+        def TRUE = "true"
+        def FALSE = "false"
+        def ENABLE_LOG = "ENABLE_LOG"
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+            buildConfigField BOOLEAN, ENABLE_LOG, FALSE
+        }
+
+        debug {
+            signingConfig signingConfigs.debug
+            buildConfigField BOOLEAN, ENABLE_LOG, TRUE
+            applicationIdSuffix ".debug"
+        }
+
+    }
+
+    productFlavors {
+        def SERVICE_URL_BASE = "BASE_SERVICE_URL"
+        def SERVICE_URL_VERSION_CODE = "SERVICE_URL_VERSION_CODE"
+        def SERVICE_URL_APP_NAME = "SERVICE_URL_APP_NAME"
+        def SERVICE_URL_FORGOT_PASS = "SERVICE_URL_FORGOT_PASS"
+        def STRING = "String"
+        def VERSION_NAME = "1.0.0"
+
+        dev {
+            applicationId "com.sbtn.androidtv.dev"
+            versionName VERSION_NAME
+            versionCode 1
+            buildConfigField STRING, SERVICE_URL_BASE, "\"http://dev.ottapi.com/\""
+            buildConfigField STRING, SERVICE_URL_VERSION_CODE, "\"v1.7/\""
+            buildConfigField STRING, SERVICE_URL_APP_NAME, "\"sbtn/\""
+            buildConfigField STRING, SERVICE_URL_FORGOT_PASS, "\"http://dev.sbtnapp.com/en/user/forgot_password\""
+        }
+
+        pro {
+            applicationId "com.sbtn.androidtv.pro"
+            versionName VERSION_NAME
+            versionCode 1
+            buildConfigField STRING, SERVICE_URL_BASE, "\"http://ottapi.com/\""
+            buildConfigField STRING, SERVICE_URL_VERSION_CODE, "\"v1.7/\""
+            buildConfigField STRING, SERVICE_URL_APP_NAME, "\"sbtn/\""
+            buildConfigField STRING, SERVICE_URL_FORGOT_PASS, "\"http://sbtnapp.com/en/user/forgot_password\""
+
+        }
+        devMin17 {
+            applicationId "com.sbtn.androidtv.dev"
+            versionName VERSION_NAME
+            versionCode 1
+            minSdkVersion 17
+            buildConfigField STRING, SERVICE_URL_BASE, "\"http://dev.ottapi.com/\""
+            buildConfigField STRING, SERVICE_URL_VERSION_CODE, "\"v1.7/\""
+            buildConfigField STRING, SERVICE_URL_APP_NAME, "\"sbtn/\""
+            buildConfigField STRING, SERVICE_URL_FORGOT_PASS, "\"http://dev.sbtnapp.com/en/user/forgot_password\""
+        }
+
+        devOnAsia {
+            applicationId "com.sbtn.androidtv.dev"
+            versionName VERSION_NAME
+            versionCode 1
+            buildConfigField STRING, SERVICE_URL_BASE, "\"http://dev.ottapi.com/\""
+            buildConfigField STRING, SERVICE_URL_VERSION_CODE, "\"v1.7/\""
+            buildConfigField STRING, SERVICE_URL_APP_NAME, "\"onasia/\""
+            buildConfigField STRING, SERVICE_URL_FORGOT_PASS, "\"http://dev.sbtnapp.com/en/user/forgot_password\""
+        }
+    }
+}
+
+repositories {
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile files('libs/in-app-purchasing-2.0.61.jar')
+    //    compile 'com.android.support:recyclerview-v7:23.4.0'
+    //    compile 'com.android.support:leanback-v17:23.4.0'
+    //    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:percent:+'
+    compile 'com.mcxiaoke.volley:library:1.0.0'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    compile 'io.reactivex:rxjava:1.*'
+    // And ProGuard rules for RxJava!
+    compile 'com.artemzin.rxjava:proguard-rules:1.1.6.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'com.afollestad.material-dialogs:core:0.8.5.9'
+    compile 'com.facebook.android:facebook-android-sdk:4.+'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.daimajia.easing:library:1.0.1@aar'
+    compile 'com.daimajia.androidanimations:library:1.1.3@aar'
+    compile 'com.android.support:recyclerview-v7:+'
+    compile 'com.android.support:leanback-v17:+'
+    compile 'com.android.support:appcompat-v7:+'
+    //    compile "com.android.support:preference-v7:+"
+    //    compile "com.android.support:preference-leanback-v17:+"
+    //    compile "com.android.support:preference-v14:+"
+
+    compile 'org.greenrobot:eventbus:3.0.0'
+}
